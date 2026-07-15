@@ -607,7 +607,13 @@ Possible enhancements include:
 - CI/CD Pipeline with GitHub Actions
 
 ---
+## Live Demo
 
+API:
+https://task-management-api-17y1.onrender.com
+
+Swagger:
+https://task-management-api-17y1.onrender.com/docs
 ## Author
 
 **Aditya SP**
