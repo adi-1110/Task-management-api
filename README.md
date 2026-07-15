@@ -376,57 +376,53 @@ The API implements Role-Based Access Control using reusable FastAPI dependencies
 Permissions are enforced through dependency injection rather than scattered conditional logic, improving code reusability and maintainability.
 
 ---
-
 ## Database Schema (ER Diagram)
 
 ```mermaid
 erDiagram
 
     USER {
-        int id PK
+        int id
         string name
-        string email UNIQUE
+        string email
         string hashed_password
         datetime created_at
     }
 
     PROJECT {
-        int id PK
+        int id
         string name
         string description
-        int owner_id FK
+        int owner_id
         datetime created_at
     }
 
     PROJECT_MEMBER {
-        int project_id PK, FK
-        int user_id PK, FK
+        int project_id
+        int user_id
         string role
     }
 
     TASK {
-        int id PK
+        int id
         string title
         string description
         string status
         string priority
-        int project_id FK
-        int assigned_to FK
-        int created_by FK
+        int project_id
+        int assigned_to
+        int created_by
         datetime due_date
         datetime created_at
     }
 
     USER ||--o{ PROJECT : owns
-    USER ||--o{ PROJECT_MEMBER : joins
+    USER ||--o{ PROJECT_MEMBER : member_of
     PROJECT ||--o{ PROJECT_MEMBER : contains
-
     PROJECT ||--o{ TASK : has
-
-    USER ||--o{ TASK : assigned_to
-    USER ||--o{ TASK : created_by
+    USER ||--o{ TASK : assigned
+    USER ||--o{ TASK : created
 ```
-
 ## Example API Requests
 
 ### Register User
